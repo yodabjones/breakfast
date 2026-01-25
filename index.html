@@ -15,21 +15,44 @@
     .brand-font {
       font-family: 'Playfair+Display', serif;
     }
+    #root:empty::before {
+      content: 'Loading MorningGlory...';
+      display: flex;
+      align-items: center;
+      justify-center;
+      height: 100vh;
+      width: 100%;
+      color: #f97316;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+    }
   </style>
-<script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "@google/genai": "https://esm.sh/@google/genai@^1.37.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  
+  <!-- Shim for process.env (Required for browser-based hosting like GH Pages) -->
+  <script>
+    window.process = {
+      env: {
+        // The API_KEY will be injected by the hosting environment or can be manually added here for quick testing
+        API_KEY: "" 
+      }
+    };
+  </script>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "react/": "https://esm.sh/react@^19.2.3/",
+      "react": "https://esm.sh/react@^19.2.3",
+      "@google/genai": "https://esm.sh/@google/genai@^1.37.0",
+      "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+      "react-dom": "https://esm.sh/react-dom@^19.2.3"
+    }
   }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
+  </script>
 </head>
 <body>
   <div id="root"></div>
-<script type="module" src="/index.tsx"></script>
+  <!-- Entry point for the application -->
+  <script type="module" src="./index.tsx"></script>
 </body>
 </html>
