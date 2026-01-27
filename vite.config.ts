@@ -1,13 +1,17 @@
-
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  // 'base: "./"' ensures that assets are loaded correctly on GitHub Pages sub-folders
+  // Using base: './' makes the app portable for GitHub Pages sub-folders
   base: './',
   build: {
     outDir: 'dist',
-    sourcemap: true,
-  }
+    emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: './index.html',
+      },
+    },
+  },
 });
